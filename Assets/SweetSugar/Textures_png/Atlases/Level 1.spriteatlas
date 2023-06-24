@@ -52,7 +52,7 @@ SpriteAtlas:
     - {fileID: 102900000, guid: 156e5bdac926f4b638c4e2a5f824b9f6, type: 3}
     - {fileID: 102900000, guid: 91b037be8ede34b43aa0fbee67a238ee, type: 3}
     - {fileID: 2800000, guid: d5ec597613d73415badf7fb05a44ce50, type: 3}
-    totalSpriteSurfaceArea: 3648615
+    totalSpriteSurfaceArea: 3910171
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -66,9 +66,11 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 4ca7907116890f74482c480eeea345d7, type: 3}
   - {fileID: 21300000, guid: 83b436029e41c4909ba40e2251803713, type: 3}
   - {fileID: 21300000, guid: 49dfa212e626344fcb96ee0ac5353a8d, type: 3}
+  - {fileID: 21300000, guid: b9002812d7a03054caf6276045c3457d, type: 3}
   - {fileID: 21300000, guid: 8b8ffe522f2cb4ee89fa0490d35d4074, type: 3}
   - {fileID: 21300000, guid: 9cd4439215f4d42c2a5c31705ad5f035, type: 3}
   - {fileID: 21300000, guid: 22f2e8a3f7cde4252b863e32f7514c73, type: 3}
+  - {fileID: 21300000, guid: 5612d3c3601bbef4899f4e308665dee5, type: 3}
   - {fileID: 21300000, guid: 70a5109426a0e4b5591cf8e4ffe491f7, type: 3}
   - {fileID: 21300000, guid: 6bb897a48a8bd4fd99fd21552c755c56, type: 3}
   - {fileID: 21300000, guid: 526d18a41efcd47cbbe09731a0b746e1, type: 3}
@@ -95,6 +97,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c96cea2d8231d42e58bee63cd62b0b05, type: 3}
   - {fileID: 21300000, guid: a1c5254d23c7c42529b4178c719c9d63, type: 3}
   - {fileID: 21300000, guid: 314acb7d66f99429b81bb9d39f390d3f, type: 3}
+  - {fileID: 21300000, guid: f670dfcdeb8d0714b9fb60d3fe03f93e, type: 3}
   - {fileID: 21300000, guid: 55cfcdfd58d7a475386dea88be7980c4, type: 3}
   - {fileID: 21300000, guid: dc36934e10e864d15bfb7fdbb9e8e936, type: 3}
   - {fileID: 21300000, guid: 10a8954efb9727a418c3d0ce5e1bf639, type: 3}
@@ -113,9 +116,11 @@ SpriteAtlas:
   - character_info
   - booster_bomb_01
   - booster_destroy
+  - Group-109710_0001_Layer-0
   - character_main_hand
   - horiz_top_banner
   - booster_button_lock
+  - Group 110758
   - ver_character_banner
   - field_bar_03
   - booster_30_plus_text
@@ -142,6 +147,7 @@ SpriteAtlas:
   - booster_number
   - booster_bomb_02
   - ingredient_down_arrow
+  - Rectangle 35292
   - no_match_text
   - progress_bar_01
   - sad_face2
