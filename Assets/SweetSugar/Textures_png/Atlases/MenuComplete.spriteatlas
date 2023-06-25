@@ -38,7 +38,7 @@ SpriteAtlas:
     - {fileID: 102900000, guid: 4f876bc3bab8c47c3bc6051960ec4e72, type: 3}
     - {fileID: 2800000, guid: 0922904af8b1d4f92862e3434794d200, type: 3}
     - {fileID: 102900000, guid: 91b037be8ede34b43aa0fbee67a238ee, type: 3}
-    totalSpriteSurfaceArea: 4014803
+    totalSpriteSurfaceArea: 4339609
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -57,6 +57,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 15552a6695fe74e23983b12b1f490d3d, type: 3}
   - {fileID: 21300000, guid: 1134842780b80ad499c3aa604144bdcd, type: 3}
   - {fileID: 21300000, guid: 9d084ab78d6ea194eb208e20f78d5d51, type: 3}
+  - {fileID: 21300000, guid: 8ad693e7605d74e4f8ec928012d1082b, type: 3}
   - {fileID: 21300000, guid: f3dc5e88d2bc4440fa5a748dd53ed9c7, type: 3}
   - {fileID: 21300000, guid: ca5ad9b8030ad42838eeefb9c44f9145, type: 3}
   - {fileID: 21300000, guid: 00f5701956fa6bc428f812e578d8e672, type: 3}
@@ -85,6 +86,7 @@ SpriteAtlas:
   - win_banne_02
   - complete_hand-3
   - hat
+  - Group 109709
   - character_main
   - sad_face
   - Group 110665

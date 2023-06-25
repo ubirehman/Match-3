@@ -52,7 +52,7 @@ SpriteAtlas:
     - {fileID: 102900000, guid: 156e5bdac926f4b638c4e2a5f824b9f6, type: 3}
     - {fileID: 102900000, guid: 91b037be8ede34b43aa0fbee67a238ee, type: 3}
     - {fileID: 2800000, guid: d5ec597613d73415badf7fb05a44ce50, type: 3}
-    totalSpriteSurfaceArea: 3910171
+    totalSpriteSurfaceArea: 4234977
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -84,6 +84,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 42c88f570081d42b4b5a50939afff8e4, type: 3}
   - {fileID: 21300000, guid: 83bd3f87756f14f06b3655fba0d3060a, type: 3}
   - {fileID: 21300000, guid: 9d084ab78d6ea194eb208e20f78d5d51, type: 3}
+  - {fileID: 21300000, guid: 8ad693e7605d74e4f8ec928012d1082b, type: 3}
   - {fileID: 21300000, guid: ccdc1a78b73f8478b866b4b0c9194acf, type: 3}
   - {fileID: 21300000, guid: f3dc5e88d2bc4440fa5a748dd53ed9c7, type: 3}
   - {fileID: 21300000, guid: ca5ad9b8030ad42838eeefb9c44f9145, type: 3}
@@ -134,6 +135,7 @@ SpriteAtlas:
   - booster_move_items
   - horiz_moves_bar
   - hat
+  - Group 109709
   - ver_foot_banner
   - character_main
   - sad_face
