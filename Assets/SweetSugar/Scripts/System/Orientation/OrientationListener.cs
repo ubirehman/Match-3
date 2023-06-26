@@ -47,14 +47,14 @@ namespace SweetSugar.Scripts.System.Orientation
             // {
             //     if (LevelManager.This.gameStatus == GameState.WaitForPopup) return;
             // }
-            if (( v.x > v.y) && (ScreenOrientation.Landscape != previousOrientation) || aspect != previousAspect)
+            if (( v.x > v.y) && (ScreenOrientation.LandscapeLeft != previousOrientation) || aspect != previousAspect)
             {
-                SetOrientation(ScreenOrientation.Landscape);
+                SetOrientation(ScreenOrientation.LandscapeLeft);
             }
 
-            else if (( v.x > v.y) && (ScreenOrientation.Landscape != previousOrientation) || aspect != previousAspect)
+            else if (( v.x > v.y) && (ScreenOrientation.LandscapeLeft != previousOrientation) || aspect != previousAspect)
             {
-                SetOrientation(ScreenOrientation.Landscape);
+                SetOrientation(ScreenOrientation.LandscapeLeft);
             }
 
             else if (( v.x < v.y) && (ScreenOrientation.Portrait != previousOrientation) || aspect != previousAspect)
