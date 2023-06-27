@@ -28,6 +28,7 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 0
+      enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
@@ -38,7 +39,6 @@ SpriteAtlas:
     - {fileID: 102900000, guid: 4f876bc3bab8c47c3bc6051960ec4e72, type: 3}
     - {fileID: 2800000, guid: 0922904af8b1d4f92862e3434794d200, type: 3}
     - {fileID: 102900000, guid: 91b037be8ede34b43aa0fbee67a238ee, type: 3}
-    totalSpriteSurfaceArea: 4339609
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -66,6 +66,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0922904af8b1d4f92862e3434794d200, type: 3}
   - {fileID: 21300000, guid: 2dbc952b9a909485d8e33f8def59b14b, type: 3}
   - {fileID: 21300000, guid: e0fdfd7b623794a19b62ab9c07412040, type: 3}
+  - {fileID: 21300000, guid: 72d9e59bf36117540a7b71127090338b, type: 3}
   - {fileID: 21300000, guid: 0ba8c0bbf73743b4f9c9bb707570327f, type: 3}
   - {fileID: 21300000, guid: b9b7765c0498fa842a50ff0ee884a481, type: 3}
   - {fileID: 21300000, guid: 87315fcc8fbb5694b90024577d8b3582, type: 3}
@@ -95,6 +96,7 @@ SpriteAtlas:
   - white_circle
   - character_hair
   - grey_stars
+  - Group 110740
   - tear
   - Group 110664
   - Group 110666
