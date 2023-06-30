@@ -9,11 +9,12 @@ namespace SweetSugar.Scripts.GUI
 	/// </summary>
 	public class LifeShop : MonoBehaviour
 	{
+		public TextMeshProUGUI costText;
 		public int CostIfRefill = 12;
 		// Use this for initialization
 		void OnEnable ()
 		{
-			transform.Find ("Image/Buttons/BuyLife/Price").GetComponent<TextMeshProUGUI> ().text = "" + CostIfRefill;
+            costText.text = "" + CostIfRefill;
 			if (!LevelManager.THIS.enableInApps)
 				transform.Find ("Image/Buttons/BuyLife").gameObject.SetActive (false);
 		

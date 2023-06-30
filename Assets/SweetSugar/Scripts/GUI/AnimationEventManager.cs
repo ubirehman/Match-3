@@ -480,9 +480,10 @@ namespace SweetSugar.Scripts.GUI
         public void BuyLife(GameObject button)
         {
             SoundBase.Instance.PlayOneShot(SoundBase.Instance.click);
-            if (InitScript.Gems >= int.Parse(button.transform.Find("Price").GetComponent<TextMeshProUGUI>().text))
+            var priceText = button.transform.GetComponentInChildren<TextMeshProUGUI>();
+            if (InitScript.Gems >= int.Parse(priceText.text))
             {
-                InitScript.Instance.SpendGems(int.Parse(button.transform.Find("Price").GetComponent<TextMeshProUGUI>().text));
+                InitScript.Instance.SpendGems(int.Parse(priceText.text));
                 InitScript.Instance.RestoreLifes();
                 CloseMenu();
             }

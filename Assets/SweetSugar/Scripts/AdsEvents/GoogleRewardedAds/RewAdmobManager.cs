@@ -9,7 +9,7 @@ public class RewAdmobManager : MonoBehaviour
 {
     public static RewAdmobManager THIS;
 #if GOOGLE_MOBILE_ADS
-    private RewardBasedVideoAd rewardBasedVideo;
+    // private RewardBasedVideoAd rewardBasedVideo;
     private Action resultCallback;
 
     private void Awake()
@@ -24,22 +24,22 @@ public class RewAdmobManager : MonoBehaviour
     public void Start()
     {
         // Get singleton reward based video ad reference.
-        this.rewardBasedVideo = RewardBasedVideoAd.Instance;
+        // this.rewardBasedVideo = RewardBasedVideoAd.Instance;
 
         // Called when an ad request has successfully loaded.
-        rewardBasedVideo.OnAdLoaded += HandleRewardBasedVideoLoaded;
+        // rewardBasedVideo.OnAdLoaded += HandleRewardBasedVideoLoaded;
         // Called when an ad request failed to load.
-        rewardBasedVideo.OnAdFailedToLoad += HandleRewardBasedVideoFailedToLoad;
+        // rewardBasedVideo.OnAdFailedToLoad += HandleRewardBasedVideoFailedToLoad;
         // Called when an ad is shown.
-        rewardBasedVideo.OnAdOpening += HandleRewardBasedVideoOpened;
+        // rewardBasedVideo.OnAdOpening += HandleRewardBasedVideoOpened;
         // Called when the ad starts to play.
-        rewardBasedVideo.OnAdStarted += HandleRewardBasedVideoStarted;
+        // rewardBasedVideo.OnAdStarted += HandleRewardBasedVideoStarted;
         // Called when the user should be rewarded for watching a video.
-        rewardBasedVideo.OnAdRewarded += HandleRewardBasedVideoRewarded;
+        // rewardBasedVideo.OnAdRewarded += HandleRewardBasedVideoRewarded;
         // Called when the ad is closed.
-        rewardBasedVideo.OnAdClosed += HandleRewardBasedVideoClosed;
+        // rewardBasedVideo.OnAdClosed += HandleRewardBasedVideoClosed;
         // Called when the ad click caused the user to leave the application.
-        rewardBasedVideo.OnAdLeavingApplication += HandleRewardBasedVideoLeftApplication;
+        // rewardBasedVideo.OnAdLeavingApplication += HandleRewardBasedVideoLeftApplication;
 
         this.RequestRewardBasedVideo();
     }
@@ -57,18 +57,18 @@ public class RewAdmobManager : MonoBehaviour
         // Create an empty ad request.
         AdRequest request = new AdRequest.Builder().Build();
         // Load the rewarded video ad with the request.
-        this.rewardBasedVideo.LoadAd(request, adUnitId);
+        // this.rewardBasedVideo.LoadAd(request, adUnitId);
     }
 
-    public bool IsRewardedAdIsLoaded()
-    {
-        return rewardBasedVideo.IsLoaded();
-    }
+    // public bool IsRewardedAdIsLoaded()
+    // {
+    //     // return rewardBasedVideo.IsLoaded();
+    // }
 
     public void ShowRewardedAd(Action resultCallback)
     {
         this.resultCallback = resultCallback;
-        if (IsRewardedAdIsLoaded()) rewardBasedVideo.Show();
+        // if (IsRewardedAdIsLoaded()) rewardBasedVideo.Show();
     }
 
     public void HandleRewardBasedVideoLoaded(object sender, EventArgs args)
@@ -78,9 +78,9 @@ public class RewAdmobManager : MonoBehaviour
 
     public void HandleRewardBasedVideoFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
-        MonoBehaviour.print(
-            "HandleRewardBasedVideoFailedToLoad event received with message: "
-                             + args.Message);
+        // MonoBehaviour.print(
+            // "HandleRewardBasedVideoFailedToLoad event received with message: "
+                            //  + args.Message);
         this.RequestRewardBasedVideo();
 
     }
