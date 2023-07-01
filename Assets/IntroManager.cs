@@ -8,10 +8,19 @@ using UnityEngine.SceneManagement;
 public class IntroManager : MonoBehaviour
 {
     [SerializeField] Image loadingBarFillerImage;
+
+
+    private void Awake()
+    {
+       
+    }
     // Start is called before the first frame update
     void Start()
     {
-        loadingBarFillerImage.DOFillAmount(1, 2f).SetEase(Ease.Linear).OnComplete(()=> SceneManager.LoadScene(1));
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(1);
+        asyncOperation.allowSceneActivation = false;
+
+        loadingBarFillerImage.DOFillAmount(1, 2f).SetEase(Ease.Linear).OnComplete(() => asyncOperation.allowSceneActivation = true);
     }
 
     // Update is called once per frame
