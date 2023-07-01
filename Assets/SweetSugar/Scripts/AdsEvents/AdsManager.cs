@@ -51,48 +51,48 @@ namespace SweetSugar.Scripts.AdsEvents
                 return;
             }
             DontDestroyOnLoad(this);
-//            adsSettings = Resources.Load<AdManagerScriptable>("Scriptable/AdManagerScriptable");
-//            adsEvents = adsSettings.adsEvents;
-//            admobUIDAndroid = adsSettings.admobUIDAndroid;
-//            admobUIDIOS = adsSettings.admobUIDIOS;
-//#if UNITY_ADS//2.1.1
-//            enableUnityAds = true;
-//            var unityAds = Resources.Load<UnityAdsID>("Scriptable/UnityAdsID");
-//        #if UNITY_ANDROID
-//            // Advertisement.Initialize(unityAds.androidID,false);
-//        #elif UNITY_IOS
-//            Advertisement.Initialize(unityAds.iOSID,false);
-//        #endif
-//#else
-//        enableUnityAds = false;
-//#endif
-//#if CHARTBOOST_ADS//1.6.1
-//		enableChartboostAds = true;
-//#else
-//            enableChartboostAds = false;
-//#endif
-//#if GOOGLE_MOBILE_ADS
-//		enableGoogleMobileAds =true;//1.6.1
-//#if UNITY_ANDROID
-//        /* MobileAds.Initialize(admobUIDAndroid);//2.1.6
-//        // interstitial = new InterstitialAd(admobUIDAndro id);*/
-//#elif UNITY_IOS
-//        MobileAds.Initialize(admobUIDIOS);//2.1.6
-//        interstitial = new InterstitialAd(admobUIDIOS); 
-//#else
-//        MobileAds.Initialize(admobUIDAndroid);//2.1.6
-//		interstitial = new InterstitialAd (admobUIDAndroid);
-//#endif
+            adsSettings = Resources.Load<AdManagerScriptable>("Scriptable/AdManagerScriptable");
+            adsEvents = adsSettings.adsEvents;
+            admobUIDAndroid = adsSettings.admobUIDAndroid;
+            admobUIDIOS = adsSettings.admobUIDIOS;
+#if UNITY_ADS//2.1.1
+            enableUnityAds = true;
+            var unityAds = Resources.Load<UnityAdsID>("Scriptable/UnityAdsID");
+        #if UNITY_ANDROID
+            // Advertisement.Initialize(unityAds.androidID,false);
+        #elif UNITY_IOS
+            Advertisement.Initialize(unityAds.iOSID,false);
+        #endif
+#else
+        enableUnityAds = false;
+#endif
+#if CHARTBOOST_ADS//1.6.1
+		enableChartboostAds = true;
+#else
+            enableChartboostAds = false;
+#endif
+#if GOOGLE_MOBILE_ADS
+		enableGoogleMobileAds =true;//1.6.1
+#if UNITY_ANDROID
+        /* MobileAds.Initialize(admobUIDAndroid);//2.1.6
+        // interstitial = new InterstitialAd(admobUIDAndro id);*/
+#elif UNITY_IOS
+        MobileAds.Initialize(admobUIDIOS);//2.1.6
+        interstitial = new InterstitialAd(admobUIDIOS); 
+#else
+        MobileAds.Initialize(admobUIDAndroid);//2.1.6
+		interstitial = new InterstitialAd (admobUIDAndroid);
+#endif
 
-//        // Create an empty ad request.
-//        requestAdmob = new AdRequest.Builder().Build();
+        // Create an empty ad request.
+        requestAdmob = new AdRequest.Builder().Build();
         // Load the interstitial with the request.
         // interstitial.LoadAd(requestAdmob);
         // interstitial.OnAdLoaded += HandleInterstitialLoaded;
-//        // interstitial.OnAdFailedToLoad += HandleInterstitialFailedToLoad;
-//#else
-//            enableGoogleMobileAds = false;//1.6.1
-//#endif
+        // interstitial.OnAdFailedToLoad += HandleInterstitialFailedToLoad;
+#else
+            enableGoogleMobileAds = false;//1.6.1
+#endif
         }
         
 #if GOOGLE_MOBILE_ADS
@@ -150,6 +150,9 @@ namespace SweetSugar.Scripts.AdsEvents
         public static event RewardedShown OnRewardedShown;
         public void ShowRewardedAds()
     {
+            Debug.Log("show Rewarded ads video in " + LevelManager.THIS.gameStatus);
+            GoogleAdsManager.Instance.ShowRewardedAd();
+
 #if APPODEAL
         Debug.Log("show Rewarded ads video in " + LevelManager.THIS.gameStatus);
 
@@ -158,7 +161,7 @@ namespace SweetSugar.Scripts.AdsEvents
             AppodealIntegration.THIS.ShowRewardedAds();
         }
         else{
-            #if UNITY_ADS
+#if UNITY_ADS
             Advertisement.Show(rewardedVideoZone, new ShowOptions
             {
                 resultCallback = result =>
@@ -170,14 +173,26 @@ namespace SweetSugar.Scripts.AdsEvents
                     }
                 }
             });
-            #endif
+#endif
         }
 #elif UNITY_ADS
-        Debug.Log("show Rewarded ads video in " + LevelManager.THIS.gameStatus);
+            Debug.Log("show Rewarded ads video in " + LevelManager.THIS.gameStatus);
 
         if (GetRewardedUnityAdsReady())
         {
-                GoogleAdsManager.Instance.ShowRewardedAd();
+            #if UNITY_ADS
+            /* Advertisement.Show(rewardedVideoZone, new ShowOptions
+            {
+                resultCallback = result =>
+                {
+                    if (result == ShowResult.Finished)
+                    {
+                        OnRewardedShown?.Invoke();
+                        InitScript.Instance.ShowReward();
+                    }
+                }
+            }); */
+            #endif
         }
 //#elif GOOGLE_MOBILE_ADS//2.2
 //        bool stillShow = true;
