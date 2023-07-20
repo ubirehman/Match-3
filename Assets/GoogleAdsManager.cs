@@ -12,11 +12,17 @@ public class GoogleAdsManager : MonoBehaviour
 
     public static int adCount = 0;
     public static int menuCount = 0;
+    [SerializeField] bool TESTADS = false;
+    [Space]
 
 
     public string bannerAdId = "ca-app-pub-6498477380458079/8835628989";
     public string interstitialAdId = "ca-app-pub-6498477380458079/1211401781";
     public string rewardedAdId = "ca-app-pub-6498477380458079/5669521542";
+
+    string testBanner = "ca-app-pub-3940256099942544/6300978111";
+    string testinterstitialAdId = "ca-app-pub-3940256099942544/1033173712";
+    string testrewardedAdId = "ca-app-pub-3940256099942544/5224354917";
 
 
     BannerView bannerView;
@@ -24,7 +30,7 @@ public class GoogleAdsManager : MonoBehaviour
     private InterstitialAd interstitialAd;
     private RewardedAd rewardedAd;
 
-    
+
     private bool noAdPurchase;
 
     //public Text fpsMeter;
@@ -115,7 +121,7 @@ public class GoogleAdsManager : MonoBehaviour
         // Create a 320x50 banner at top of the screen
         AdSize adaptiveSize =
                 AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth);
-        bannerView = new BannerView(bannerAdId, adaptiveSize, AdPosition.Bottom);
+        bannerView = new BannerView(TESTADS ? testBanner : bannerAdId, adaptiveSize, AdPosition.Bottom);
 
         ListenToAdEvents();
 
@@ -222,7 +228,7 @@ public class GoogleAdsManager : MonoBehaviour
         adRequest.Keywords.Add("unity-admob-sample");
 
         // send the request to load the ad.
-        InterstitialAd.Load(interstitialAdId, adRequest,
+        InterstitialAd.Load(TESTADS ? testinterstitialAdId : interstitialAdId, adRequest,
             (InterstitialAd ad, LoadAdError error) =>
             {
                 // if error is not null, the load request failed.
@@ -257,7 +263,7 @@ public class GoogleAdsManager : MonoBehaviour
         adRequest.Keywords.Add("unity-admob-sample");
 
         // send the request to load the ad.
-        RewardedAd.Load(rewardedAdId, adRequest,
+        RewardedAd.Load(TESTADS ? testrewardedAdId : rewardedAdId, adRequest,
             (RewardedAd ad, LoadAdError error) =>
             {
                 // if error is not null, the load request failed.
@@ -336,6 +342,6 @@ public class GoogleAdsManager : MonoBehaviour
     }
 
 
-    
+
 
 }

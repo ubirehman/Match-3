@@ -927,6 +927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede62d158696dd34dbf114e640a6833f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TESTADS: 1
   bannerAdId: ca-app-pub-6498477380458079/8835628989
   interstitialAdId: ca-app-pub-6498477380458079/1211401781
   rewardedAdId: ca-app-pub-6498477380458079/5669521542

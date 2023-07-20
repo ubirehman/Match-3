@@ -75,6 +75,7 @@ SpriteAtlas:
     - 6bb897a48a8bd4fd99fd21552c755c56: 21300000
     - 526d18a41efcd47cbbe09731a0b746e1: 21300000
     - 5282532549d3341d98eb34c992062e66: 21300000
+    - 8b729195f1383b347968b98d6ca3f6df: 21300000
     - 5594c7a5c603947c5a44f56ab886c4af: 21300000
     - 520fe2d59915348538158ec2ccd9cf70: 21300000
     - d8019ce55bcd245da9cf62413dbdb023: 21300000
@@ -127,6 +128,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6bb897a48a8bd4fd99fd21552c755c56, type: 3}
   - {fileID: 21300000, guid: 526d18a41efcd47cbbe09731a0b746e1, type: 3}
   - {fileID: 21300000, guid: 5282532549d3341d98eb34c992062e66, type: 3}
+  - {fileID: 21300000, guid: 8b729195f1383b347968b98d6ca3f6df, type: 3}
   - {fileID: 21300000, guid: 5594c7a5c603947c5a44f56ab886c4af, type: 3}
   - {fileID: 21300000, guid: 520fe2d59915348538158ec2ccd9cf70, type: 3}
   - {fileID: 21300000, guid: d8019ce55bcd245da9cf62413dbdb023, type: 3}
@@ -178,6 +180,7 @@ SpriteAtlas:
   - field_bar_03
   - booster_30_plus_text
   - happy_face
+  - Character 1
   - ver_moves_bar
   - horiz_foot_banner
   - moves
