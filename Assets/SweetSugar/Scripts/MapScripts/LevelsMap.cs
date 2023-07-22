@@ -44,7 +44,7 @@ namespace SweetSugar.Scripts.MapScripts
             }
         }
 
-        List<MapLevel> MapLevels = new List<MapLevel>();
+        public List<MapLevel> MapLevels = new List<MapLevel>();
 
         public List<MapLevel> GetMapLevels()
         {
