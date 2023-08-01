@@ -119,7 +119,7 @@ namespace SweetSugar.Scripts.GUI
             lastResolution.x = Screen.width;
             lastResolution.y = Screen.height;
      
-            isLandscape = lastOrientation == ScreenOrientation.LandscapeLeft || lastOrientation == ScreenOrientation.LandscapeRight || lastOrientation == ScreenOrientation.Landscape;
+            isLandscape = lastOrientation == ScreenOrientation.LandscapeLeft || lastOrientation == ScreenOrientation.LandscapeRight || lastOrientation == ScreenOrientation.LandscapeLeft;
             onOrientationChange.Invoke();
      
         }

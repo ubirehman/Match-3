@@ -130,7 +130,7 @@ namespace SweetSugar.Scripts.System.Orientation
         public CameraParameters GetCameraParameters()
         {
             var cameraParameters = new CameraParameters();
-            if (currentOrientation == ScreenOrientation.Landscape)
+            if (currentOrientation == ScreenOrientation.LandscapeLeft)
             {
                 var fieldRect = LevelManager.THIS.field.GetFieldRect();
                 var h = fieldRect.height / 2 + 0.5f;

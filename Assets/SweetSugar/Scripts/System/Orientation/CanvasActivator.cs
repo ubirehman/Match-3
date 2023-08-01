@@ -12,7 +12,7 @@ namespace SweetSugar.Scripts.System.Orientation
         {
             if (orientation == ScreenOrientation.Portrait)
                 GetComponent<CanvasScaler>().matchWidthOrHeight = 1;
-            else if (orientation == ScreenOrientation.Landscape)
+            else if (orientation == ScreenOrientation.LandscapeLeft)
                 GetComponent<CanvasScaler>().matchWidthOrHeight = 0;
 
         }

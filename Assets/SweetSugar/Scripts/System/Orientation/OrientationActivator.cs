@@ -46,7 +46,7 @@ namespace SweetSugar.Scripts.System.Orientation
 
             }
 
-            else if (orientation == ScreenOrientation.Landscape)
+            else if (orientation == ScreenOrientation.LandscapeLeft)
             {
                 var aspect = Screen.width / (float)Screen.height;
                 aspect = (float)Math.Round(aspect, 2);

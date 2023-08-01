@@ -59,7 +59,7 @@ namespace SweetSugar.Scripts.AdsEvents
             enableUnityAds = true;
             var unityAds = Resources.Load<UnityAdsID>("Scriptable/UnityAdsID");
         #if UNITY_ANDROID
-            Advertisement.Initialize(unityAds.androidID,false);
+            // Advertisement.Initialize(unityAds.androidID,false);
         #elif UNITY_IOS
             Advertisement.Initialize(unityAds.iOSID,false);
         #endif
@@ -74,11 +74,11 @@ namespace SweetSugar.Scripts.AdsEvents
 #if GOOGLE_MOBILE_ADS
 		enableGoogleMobileAds =true;//1.6.1
 #if UNITY_ANDROID
-        MobileAds.Initialize(admobUIDAndroid);//2.1.6
-        interstitial = new InterstitialAd(admobUIDAndroid);
+        /* MobileAds.Initialize(admobUIDAndroid);//2.1.6
+        // interstitial = new InterstitialAd(admobUIDAndro id);*/
 #elif UNITY_IOS
         MobileAds.Initialize(admobUIDIOS);//2.1.6
-        interstitial = new InterstitialAd(admobUIDIOS);
+        interstitial = new InterstitialAd(admobUIDIOS); 
 #else
         MobileAds.Initialize(admobUIDAndroid);//2.1.6
 		interstitial = new InterstitialAd (admobUIDAndroid);
@@ -87,9 +87,9 @@ namespace SweetSugar.Scripts.AdsEvents
         // Create an empty ad request.
         requestAdmob = new AdRequest.Builder().Build();
         // Load the interstitial with the request.
-        interstitial.LoadAd(requestAdmob);
-        interstitial.OnAdLoaded += HandleInterstitialLoaded;
-        interstitial.OnAdFailedToLoad += HandleInterstitialFailedToLoad;
+        // interstitial.LoadAd(requestAdmob);
+        // interstitial.OnAdLoaded += HandleInterstitialLoaded;
+        // interstitial.OnAdFailedToLoad += HandleInterstitialFailedToLoad;
 #else
             enableGoogleMobileAds = false;//1.6.1
 #endif
@@ -102,10 +102,10 @@ namespace SweetSugar.Scripts.AdsEvents
         print("HandleInterstitialLoaded event received.");
     }
 
-    public void HandleInterstitialFailedToLoad(object sender, AdFailedToLoadEventArgs args)
-    {
-        print("HandleInterstitialFailedToLoad event received with message: " + args.Message);
-    }
+    // public void HandleInterstitialFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+    // {
+    //     print("HandleInterstitialFailedToLoad event received with message: " + args.Message);
+    // }
 #endif
         
         public bool GetRewardedUnityAdsReady()
@@ -116,19 +116,19 @@ namespace SweetSugar.Scripts.AdsEvents
 #if UNITY_ADS
 
             rewardedVideoZone = "rewardedVideo";
-            if (Advertisement.IsReady(rewardedVideoZone))
+           /*  if (Advertisement.IsReady(rewardedVideoZone))
             {
                 return true;
             }
             else
-            {
+            { */
                 rewardedVideoZone = "rewardedVideoZone";
-                if (Advertisement.IsReady(rewardedVideoZone))
+               /*  if (Advertisement.IsReady(rewardedVideoZone))
                 {
                     return true;
-                }
-            }
-#endif
+                } */
+            /* }
+#endif */
 
             return false;
         }
@@ -138,8 +138,8 @@ namespace SweetSugar.Scripts.AdsEvents
 #if GOOGLE_MOBILE_ADS
             if (interstitial != null)
             {
-                interstitial.OnAdLoaded -= HandleInterstitialLoaded;
-                interstitial.OnAdFailedToLoad -= HandleInterstitialFailedToLoad;
+                // interstitial.OnAdLoaded -= HandleInterstitialLoaded;
+                // interstitial.OnAdFailedToLoad -= HandleInterstitialFailedToLoad;
             }
 
 #endif
@@ -150,6 +150,9 @@ namespace SweetSugar.Scripts.AdsEvents
         public static event RewardedShown OnRewardedShown;
         public void ShowRewardedAds()
     {
+            Debug.Log("show Rewarded ads video in " + LevelManager.THIS.gameStatus);
+            GoogleAdsManager.Instance.ShowRewardedAd();
+
 #if APPODEAL
         Debug.Log("show Rewarded ads video in " + LevelManager.THIS.gameStatus);
 
@@ -158,7 +161,7 @@ namespace SweetSugar.Scripts.AdsEvents
             AppodealIntegration.THIS.ShowRewardedAds();
         }
         else{
-            #if UNITY_ADS
+#if UNITY_ADS
             Advertisement.Show(rewardedVideoZone, new ShowOptions
             {
                 resultCallback = result =>
@@ -170,15 +173,15 @@ namespace SweetSugar.Scripts.AdsEvents
                     }
                 }
             });
-            #endif
+#endif
         }
 #elif UNITY_ADS
-        Debug.Log("show Rewarded ads video in " + LevelManager.THIS.gameStatus);
+            Debug.Log("show Rewarded ads video in " + LevelManager.THIS.gameStatus);
 
         if (GetRewardedUnityAdsReady())
         {
             #if UNITY_ADS
-            Advertisement.Show(rewardedVideoZone, new ShowOptions
+            /* Advertisement.Show(rewardedVideoZone, new ShowOptions
             {
                 resultCallback = result =>
                 {
@@ -188,7 +191,7 @@ namespace SweetSugar.Scripts.AdsEvents
                         InitScript.Instance.ShowReward();
                     }
                 }
-            });
+            }); */
             #endif
         }
 //#elif GOOGLE_MOBILE_ADS//2.2
@@ -234,7 +237,7 @@ namespace SweetSugar.Scripts.AdsEvents
 #if UNITY_ADS
         Debug.Log("show Unity ads video in " + LevelManager.THIS.gameStatus);
 
-        if (Advertisement.IsReady("video"))
+       /*  if (Advertisement.IsReady("video"))
         {
             Advertisement.Show("video");
         }
@@ -244,7 +247,7 @@ namespace SweetSugar.Scripts.AdsEvents
             {
                 Advertisement.Show("defaultZone");
             }
-        }
+        } */
 #endif
     }
 
@@ -279,24 +282,25 @@ namespace SweetSugar.Scripts.AdsEvents
         {
 #if GOOGLE_MOBILE_ADS
             Debug.Log("show admob Interstitial in " + LevelManager.THIS.gameStatus);
-            if (interstitial.IsLoaded())
+            // if (interstitial.IsLoaded())
             {
                 interstitial.Show();
 #if UNITY_ANDROID
-                interstitial = new InterstitialAd(admobUIDAndroid);
+                // interstitial = new InterstitialAd(admobUIDAndroid);
 #elif UNITY_IOS
-                interstitial = new InterstitialAd(admobUIDIOS);
+                // interstitial = new InterstitialAd(admobUIDIOS);
 #else
-				interstitial = new InterstitialAd (admobUIDAndroid);
+				// interstitial = new InterstitialAd (admobUIDAndroid);
 #endif
 
                 // Create an empty ad request.
                 requestAdmob = new AdRequest.Builder().Build();
                 // Load the interstitial with the request.
-                interstitial.LoadAd(requestAdmob);
+                // interstitial.LoadAd(requestAdmob);
             }
 #endif
         }
     }
     }
+#endif
 }
