@@ -121,12 +121,6 @@ namespace SweetSugar.Scripts.Core
             FacebookManager fbManager = new GameObject("FacebookManager").AddComponent<FacebookManager>();
 #endif
 #if GOOGLE_MOBILE_ADS
-            var obj = FindObjectOfType<RewAdmobManager>();
-            if (obj == null)
-            {
-                GameObject gm = new GameObject("AdmobRewarded");
-                gm.AddComponent<RewAdmobManager>();
-            }
 #endif
         }
 

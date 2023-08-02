@@ -6,13 +6,6 @@ using System.Collections.Generic;
 using SweetSugar.Scripts.Core;
 using SweetSugar.Scripts.Integrations;
 using UnityEngine;
-#if GOOGLE_MOBILE_ADS
-using GoogleMobileAds.Api;
-
-#endif
-#if UNITY_ADS
-using UnityEngine.Advertisements;
-#endif
 namespace SweetSugar.Scripts.AdsEvents
 {
     /// <summary>
@@ -32,10 +25,6 @@ namespace SweetSugar.Scripts.AdsEvents
         //rewarded zone for Unity ads
         public string rewardedVideoZone;
         //admob stuff
-#if GOOGLE_MOBILE_ADS
-        public InterstitialAd interstitial;
-    private AdRequest requestAdmob;
-#endif
         public string admobUIDAndroid;
         public string admobRewardedUIDAndroid;
         public string admobUIDIOS;
@@ -55,44 +44,7 @@ namespace SweetSugar.Scripts.AdsEvents
             adsEvents = adsSettings.adsEvents;
             admobUIDAndroid = adsSettings.admobUIDAndroid;
             admobUIDIOS = adsSettings.admobUIDIOS;
-#if UNITY_ADS//2.1.1
-            enableUnityAds = true;
-            var unityAds = Resources.Load<UnityAdsID>("Scriptable/UnityAdsID");
-        #if UNITY_ANDROID
-            // Advertisement.Initialize(unityAds.androidID,false);
-        #elif UNITY_IOS
-            Advertisement.Initialize(unityAds.iOSID,false);
-        #endif
-#else
-        enableUnityAds = false;
-#endif
-#if CHARTBOOST_ADS//1.6.1
-		enableChartboostAds = true;
-#else
-            enableChartboostAds = false;
-#endif
-#if GOOGLE_MOBILE_ADS
-		enableGoogleMobileAds =true;//1.6.1
-#if UNITY_ANDROID
-        /* MobileAds.Initialize(admobUIDAndroid);//2.1.6
-        // interstitial = new InterstitialAd(admobUIDAndro id);*/
-#elif UNITY_IOS
-        MobileAds.Initialize(admobUIDIOS);//2.1.6
-        interstitial = new InterstitialAd(admobUIDIOS); 
-#else
-        MobileAds.Initialize(admobUIDAndroid);//2.1.6
-		interstitial = new InterstitialAd (admobUIDAndroid);
-#endif
 
-        // Create an empty ad request.
-        requestAdmob = new AdRequest.Builder().Build();
-        // Load the interstitial with the request.
-        // interstitial.LoadAd(requestAdmob);
-        // interstitial.OnAdLoaded += HandleInterstitialLoaded;
-        // interstitial.OnAdFailedToLoad += HandleInterstitialFailedToLoad;
-#else
-            enableGoogleMobileAds = false;//1.6.1
-#endif
         }
         
 #if GOOGLE_MOBILE_ADS
@@ -135,14 +87,6 @@ namespace SweetSugar.Scripts.AdsEvents
 
         private void OnDisable()
         {
-#if GOOGLE_MOBILE_ADS
-            if (interstitial != null)
-            {
-                // interstitial.OnAdLoaded -= HandleInterstitialLoaded;
-                // interstitial.OnAdFailedToLoad -= HandleInterstitialFailedToLoad;
-            }
-
-#endif
         }
 
         public delegate void RewardedShown();
@@ -151,7 +95,7 @@ namespace SweetSugar.Scripts.AdsEvents
         public void ShowRewardedAds()
     {
             Debug.Log("show Rewarded ads video in " + LevelManager.THIS.gameStatus);
-            GoogleAdsManager.Instance.ShowRewardedAd();
+            // GoogleAdsManager.Instance.ShowRewardedAd();
 
 #if APPODEAL
         Debug.Log("show Rewarded ads video in " + LevelManager.THIS.gameStatus);
@@ -280,25 +224,6 @@ namespace SweetSugar.Scripts.AdsEvents
         }
         else
         {
-#if GOOGLE_MOBILE_ADS
-            Debug.Log("show admob Interstitial in " + LevelManager.THIS.gameStatus);
-            // if (interstitial.IsLoaded())
-            {
-                interstitial.Show();
-#if UNITY_ANDROID
-                // interstitial = new InterstitialAd(admobUIDAndroid);
-#elif UNITY_IOS
-                // interstitial = new InterstitialAd(admobUIDIOS);
-#else
-				// interstitial = new InterstitialAd (admobUIDAndroid);
-#endif
-
-                // Create an empty ad request.
-                requestAdmob = new AdRequest.Builder().Build();
-                // Load the interstitial with the request.
-                // interstitial.LoadAd(requestAdmob);
-            }
-#endif
         }
     }
     }

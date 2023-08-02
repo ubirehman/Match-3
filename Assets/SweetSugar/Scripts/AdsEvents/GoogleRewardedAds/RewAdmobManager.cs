@@ -1,6 +1,5 @@
 using System;
 #if GOOGLE_MOBILE_ADS
-using GoogleMobileAds.Api;
 using SweetSugar.Scripts.AdsEvents;
 #endif
 using UnityEngine;
@@ -46,18 +45,7 @@ public class RewAdmobManager : MonoBehaviour
 
     private void RequestRewardBasedVideo()
     {
-#if UNITY_ANDROID
-        string adUnitId = AdsManager.THIS.admobRewardedUIDAndroid;
-#elif UNITY_IPHONE
-        string adUnitId = AdsManager.THIS.admobRewardedUIDIOS;
-#else
-            string adUnitId = "unexpected_platform";
-#endif
 
-        // Create an empty ad request.
-        AdRequest request = new AdRequest.Builder().Build();
-        // Load the rewarded video ad with the request.
-        // this.rewardBasedVideo.LoadAd(request, adUnitId);
     }
 
     // public bool IsRewardedAdIsLoaded()
@@ -76,14 +64,7 @@ public class RewAdmobManager : MonoBehaviour
         MonoBehaviour.print("HandleRewardBasedVideoLoaded event received");
     }
 
-    public void HandleRewardBasedVideoFailedToLoad(object sender, AdFailedToLoadEventArgs args)
-    {
-        // MonoBehaviour.print(
-        //     "HandleRewardBasedVideoFailedToLoad event received with message: "
-        //                      + args.Message);
-        // this.RequestRewardBasedVideo();
-
-    }
+ 
 
     public void HandleRewardBasedVideoOpened(object sender, EventArgs args)
     {
@@ -101,17 +82,7 @@ public class RewAdmobManager : MonoBehaviour
         this.RequestRewardBasedVideo();
     }
 
-    public void HandleRewardBasedVideoRewarded(object sender, Reward args)
-    {
-        string type = args.Type;
-        double amount = args.Amount;
-        MonoBehaviour.print(
-            "HandleRewardBasedVideoRewarded event received for "
-                        + amount.ToString() + " " + type);
-        if (resultCallback != null) resultCallback();
-        this.RequestRewardBasedVideo();
-
-    }
+    
 
     public void HandleRewardBasedVideoLeftApplication(object sender, EventArgs args)
     {
