@@ -5,6 +5,7 @@ using GoogleMobileAds.Common;
 using System.Collections.Generic;
 using System.Collections;
 using System;
+using SweetSugar.Scripts.Core;
 
 public class GoogleAdsManager : MonoBehaviour
 {
@@ -338,6 +339,7 @@ public class GoogleAdsManager : MonoBehaviour
         ad.OnAdFullScreenContentClosed += () =>
         {
             Debug.Log("Rewarded ad full screen content closed.");
+            InitScript.Instance.AddLife(1);
             LoadRewardedAd();
         };
         // Raised when the ad failed to open full screen content.
