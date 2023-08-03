@@ -95,7 +95,7 @@ namespace SweetSugar.Scripts.AdsEvents
         public void ShowRewardedAds()
     {
             Debug.Log("show Rewarded ads video in " + LevelManager.THIS.gameStatus);
-            // GoogleAdsManager.Instance.ShowRewardedAd();
+            GoogleAdsManager.Instance.ShowRewardedAd();
 
 #if APPODEAL
         Debug.Log("show Rewarded ads video in " + LevelManager.THIS.gameStatus);

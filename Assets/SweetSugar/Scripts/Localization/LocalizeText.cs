@@ -19,20 +19,20 @@ namespace SweetSugar.Scripts.Localization
         private string _originalText;
         private string _currentText;
 
-        private void Awake()
-        {
-            textObject = GetComponent<TextMeshProUGUI>();
-        }
+        // private void Awake()
+        // {
+        //     textObject = GetComponent<TextMeshProUGUI>();
+        // }
 
-        private void OnEnable()
-        {
-            //take text from target editor
-            if (instanceID == 33 || instanceID == 45) return;
-            _originalText = textObject.text;
-            _currentText = LocalizationManager.GetText(instanceID, _originalText);
-            textObject.text = _currentText;
+        // private void OnEnable()
+        // {
+        //     //take text from target editor
+        //     if (instanceID == 33 || instanceID == 45) return;
+        //     _originalText = textObject.text;
+        //     _currentText = LocalizationManager.GetText(instanceID, _originalText);
+        //     textObject.text = _currentText;
 
-        }
+        // }
 
 //        private void Update()
 //        {
