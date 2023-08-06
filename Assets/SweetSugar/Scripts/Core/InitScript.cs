@@ -387,6 +387,7 @@ namespace SweetSugar.Scripts.Core
         GetLifes,
         GetGems,
         GetGoOn,
-        FreeAction
+        FreeAction,
+        DoubleUpCash
     }
 }

@@ -53,7 +53,7 @@ namespace SweetSugar.Scripts.GUI
             }
             if (name == "PreFailed")
             {
-//            SoundBase.Instance.PlayOneShot(SoundBase.Instance.gameOver[0]);
+                //            SoundBase.Instance.PlayOneShot(SoundBase.Instance.gameOver[0]);
                 transform.Find("Banner/Buttons/Video").gameObject.SetActive(false);
                 transform.Find("Banner/Buttons/Buy").GetComponent<Button>().interactable = true;
 
@@ -110,12 +110,12 @@ namespace SweetSugar.Scripts.GUI
             if (videoButton != null)
             {
 #if UNITY_ADS || GOOGLE_MOBILE_ADS || APPODEAL
-            AdsManager.THIS.rewardedVideoZone = "rewardedVideo";
+                AdsManager.THIS.rewardedVideoZone = "rewardedVideo";
 
-			if (!AdsManager.THIS.GetRewardedUnityAdsReady ())
-				videoButton.gameObject.SetActive (false);
-            else
-                videoButton.gameObject.SetActive (true);
+                if (!AdsManager.THIS.GetRewardedUnityAdsReady())
+                    videoButton.gameObject.SetActive(false);
+                else
+                    videoButton.gameObject.SetActive(true);
 #else
                 videoButton.gameObject.SetActive(false);
 #endif
@@ -137,12 +137,22 @@ namespace SweetSugar.Scripts.GUI
         public void ShowAds()
         {
             if (name == "GemsShop")
+            {
                 InitScript.Instance.currentReward = RewardsType.GetGems;
+                GoogleAdsManager.Instance.adEventCode = 2;
+            }
             else if (name == "LiveShop")
+            {
                 InitScript.Instance.currentReward = RewardsType.GetLifes;
+                GoogleAdsManager.Instance.adEventCode = 3;
+            }
             else if (name == "PreFailed")
+            {
                 InitScript.Instance.currentReward = RewardsType.GetGoOn;
-            AdsManager.THIS.ShowRewardedAds();
+                GoogleAdsManager.Instance.adEventCode = 4;
+            }
+            // AdsManager.THIS.ShowRewardedAds();
+            GoogleAdsManager.Instance.ShowRewardedAd();
             CloseMenu();
         }
 
@@ -153,7 +163,7 @@ namespace SweetSugar.Scripts.GUI
         {
 
 #if UNITY_ANDROID
-        Application.OpenURL(InitScript.Instance.RateURL);
+            Application.OpenURL(InitScript.Instance.RateURL);
 #elif UNITY_IOS
         Application.OpenURL(InitScript.Instance.RateURLIOS);
 #endif
@@ -216,7 +226,7 @@ namespace SweetSugar.Scripts.GUI
             {
                 CloseMenu();
                 LevelManager.THIS.gameStatus = GameState.Tutorial;
-                if(LevelManager.THIS.levelData.limitType == LIMIT.TIME) SoundBase.Instance.PlayOneShot(SoundBase.Instance.timeOut);
+                if (LevelManager.THIS.levelData.limitType == LIMIT.TIME) SoundBase.Instance.PlayOneShot(SoundBase.Instance.timeOut);
 
             }
             if (name == "PreFailed")
@@ -255,12 +265,14 @@ namespace SweetSugar.Scripts.GUI
                 GetComponent<Animation>()["bannerFailed"].speed = 0;
 #if UNITY_ADS
 
-			if (AdsManager.THIS.enableUnityAds) {
+                if (AdsManager.THIS.enableUnityAds)
+                {
 
-				if (AdsManager.THIS.GetRewardedUnityAdsReady ()) {
-					transform.Find ("Banner/Buttons/Video").gameObject.SetActive (true);
-				}
-			}
+                    if (AdsManager.THIS.GetRewardedUnityAdsReady())
+                    {
+                        transform.Find("Banner/Buttons/Video").gameObject.SetActive(true);
+                    }
+                }
 #endif
             }
         }
@@ -332,7 +344,7 @@ namespace SweetSugar.Scripts.GUI
             }
             if (gameObject.name == "MenuComplete")
             {
-//            LevelManager.THIS.gameStatus = GameState.Map;
+                //            LevelManager.THIS.gameStatus = GameState.Map;
                 PlayerPrefs.SetInt("OpenLevel", LevelManager.THIS.currentLevel + 1);
                 CrosssceneData.openNextLevel = true;
                 SceneManager.LoadScene(Resources.Load<MapSwitcher>("Scriptable/MapSwitcher").GetSceneName());
@@ -496,14 +508,14 @@ namespace SweetSugar.Scripts.GUI
 
         public void BuyFailed(GameObject button)
         {
-//        if (GetComponent<Animation>()["bannerFailed"].speed == 0)
+            //        if (GetComponent<Animation>()["bannerFailed"].speed == 0)
             {
                 if (InitScript.Gems >= LevelManager.THIS.FailedCost)
                 {
                     InitScript.Instance.SpendGems(LevelManager.THIS.FailedCost);
                     button.GetComponent<Button>().interactable = false;
                     GoOnFailed();
-                    GetComponent<Animation>()["bannerFailed"].speed = 1;  
+                    GetComponent<Animation>()["bannerFailed"].speed = 1;
                 }
                 else
                 {

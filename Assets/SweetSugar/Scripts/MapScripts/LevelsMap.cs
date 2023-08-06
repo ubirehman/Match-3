@@ -7,9 +7,10 @@ using UnityEngine;
 
 namespace SweetSugar.Scripts.MapScripts
 {
-    public class LevelsMap : MonoBehaviour {
+    public class LevelsMap : MonoBehaviour
+    {
         public static LevelsMap _instance;
-        private static IMapProgressManager _mapProgressManager = new PlayerPrefsMapProgressManager ();
+        private static IMapProgressManager _mapProgressManager = new PlayerPrefsMapProgressManager();
 
         public bool IsGenerated;
 
@@ -30,17 +31,21 @@ namespace SweetSugar.Scripts.MapScripts
         public bool IsClickEnabled;
         public bool IsConfirmationEnabled;
 
-        public void Awake () {
+        public void Awake()
+        {
             _instance = this;
         }
 
-        public void OnDestroy () {
+        public void OnDestroy()
+        {
             _instance = null;
         }
 
-        public void OnEnable () {
-            if (IsGenerated) {
-                Reset ();
+        public void OnEnable()
+        {
+            if (IsGenerated)
+            {
+                Reset();
             }
         }
 
@@ -61,7 +66,7 @@ namespace SweetSugar.Scripts.MapScripts
             int number = GetLastestReachedLevel();
             if (number > 1 && CrosssceneData.win)
                 WalkToLevelInternal(number);
-            else TeleportToLevelInternal(number,true);
+            else TeleportToLevelInternal(number, true);
             SetCameraToCharacter();
         }
 
@@ -204,7 +209,7 @@ namespace SweetSugar.Scripts.MapScripts
                     RaiseLevelReached(number);
             }
         }
-    
+
         public delegate void ReachedLevelEvent();
         public static ReachedLevelEvent OnLevelReached;
 

@@ -19,9 +19,9 @@ namespace SweetSugar.Scripts.Localization
         {
             if (THIS == null) THIS = this;
             else if (THIS != this) Destroy(gameObject);
-            DontDestroyOnLoad(this);
-            _debugSettings = Resources.Load("Scriptable/DebugSettings") as DebugSettings;
-            LoadLanguage(GetSystemLanguage(_debugSettings));
+            // DontDestroyOnLoad(this);
+            // _debugSettings = Resources.Load("Scriptable/DebugSettings") as DebugSettings;
+            // LoadLanguage(GetSystemLanguage(_debugSettings));
         }
         
         public static void LoadLanguage(SystemLanguage? language)

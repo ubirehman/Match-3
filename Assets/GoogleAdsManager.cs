@@ -6,13 +6,18 @@ using System.Collections.Generic;
 using System.Collections;
 using System;
 using SweetSugar.Scripts.Core;
+using SweetSugar.Scripts.System;
+using SweetSugar.Scripts.GUI;
+using SweetSugar.Scripts.GUI.BonusSpin;
 
 public class GoogleAdsManager : MonoBehaviour
 {
     public static GoogleAdsManager Instance;
 
+
     public static int adCount = 0;
     public static int menuCount = 0;
+    public int adEventCode = 0;
     [SerializeField] bool TESTADS = false;
     [Space]
 
@@ -339,7 +344,7 @@ public class GoogleAdsManager : MonoBehaviour
         ad.OnAdFullScreenContentClosed += () =>
         {
             Debug.Log("Rewarded ad full screen content closed.");
-            InitScript.Instance.AddLife(1);
+            RewardedAdEventCode();
             LoadRewardedAd();
         };
         // Raised when the ad failed to open full screen content.
@@ -352,7 +357,50 @@ public class GoogleAdsManager : MonoBehaviour
         };
     }
 
+    private void RewardedAdEventCode()
+    {
+        switch (InitScript.Instance.currentReward)
+        {
+            case RewardsType.GetLifes:
+                ShowReward();
+                break;
+            case RewardsType.DoubleUpCash:
+                FindObjectOfType<LevelCompleteCash>().DoubleUpRewardOnAdWatch();
+                break;
+            case RewardsType.FreeAction:
+                BonusSpin.Instance.StartSpin();
+                break;
+            case RewardsType.GetGems:
+                ShowReward();
+                break;
+            case RewardsType.GetGoOn:
+                ShowReward();
+                break;
+
+        }
+    }
 
 
 
+    public void ShowReward()
+    {
+        var reward = MenuReference.THIS.Reward.GetComponent<RewardIcon>();
+        if (InitScript.Instance.currentReward == RewardsType.GetGems)
+        {
+            InitScript.Instance.ShowGemsReward(5);
+            MenuReference.THIS.GemsShop.GetComponent<AnimationEventManager>().CloseMenu();
+        }
+        else if (InitScript.Instance.currentReward == RewardsType.GetLifes)
+        {
+            reward.SetIconSprite(1);
+            reward.gameObject.SetActive(true);
+            InitScript.Instance.RestoreLifes();
+            MenuReference.THIS.LiveShop.GetComponent<AnimationEventManager>().CloseMenu();
+        }
+        else if (InitScript.Instance.currentReward == RewardsType.GetGoOn)
+        {
+            MenuReference.THIS.PreFailed.GetComponent<AnimationEventManager>().GoOnFailed();
+        }
+
+    }
 }

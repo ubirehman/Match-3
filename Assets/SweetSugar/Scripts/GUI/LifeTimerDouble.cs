@@ -21,7 +21,7 @@ namespace SweetSugar.Scripts.GUI
         // Update is called once per frame
         void Update()
         {
-            textDest.text = "+1" + LocalizationManager.GetText(0, "life after") + textSource.text;
+            textDest.text = "+1" + "life after" + textSource.text;
         }
     }
 }

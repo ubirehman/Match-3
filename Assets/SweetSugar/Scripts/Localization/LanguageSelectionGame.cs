@@ -15,16 +15,16 @@ namespace DefaultNamespace
     {
         private IEnumerable<CultureInfo> cultures;
         private TMP_Dropdown Dropdown;
-        private void Start()
-        {
-            Dropdown = GetComponent<TMP_Dropdown>();
-            var txt = Resources.LoadAll<TextAsset>("Localization/");
-            cultures = CultureInfo.GetCultures(CultureTypes.AllCultures).Where(i => txt.Any(x => x.name == i.DisplayName));
-            Dropdown.options = cultures.Select(i => new TMP_Dropdown.OptionData(i.Name.ToUpper(), null)).ToList();
-            var _debugSettings = Resources.Load("Scriptable/DebugSettings") as DebugSettings;
-            Dropdown.captionText.text = cultures.First(i => i.EnglishName == LocalizationManager.GetSystemLanguage(_debugSettings).ToString()).Name.ToUpper();
-            Dropdown.value = cultures.ToList().FindIndex(i => i.EnglishName == LocalizationManager.GetSystemLanguage(_debugSettings).ToString());
-        }
+        // private void Start()
+        // {
+        //     Dropdown = GetComponent<TMP_Dropdown>();
+        //     var txt = Resources.LoadAll<TextAsset>("Localization/");
+        //     cultures = CultureInfo.GetCultures(CultureTypes.AllCultures).Where(i => txt.Any(x => x.name == i.DisplayName));
+        //     Dropdown.options = cultures.Select(i => new TMP_Dropdown.OptionData(i.Name.ToUpper(), null)).ToList();
+        //     var _debugSettings = Resources.Load("Scriptable/DebugSettings") as DebugSettings;
+        //     Dropdown.captionText.text = cultures.First(i => i.EnglishName == LocalizationManager.GetSystemLanguage(_debugSettings).ToString()).Name.ToUpper();
+        //     Dropdown.value = cultures.ToList().FindIndex(i => i.EnglishName == LocalizationManager.GetSystemLanguage(_debugSettings).ToString());
+        // }
 
         public void OnChangeLanguage()
         {

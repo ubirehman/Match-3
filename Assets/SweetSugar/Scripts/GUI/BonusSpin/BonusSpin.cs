@@ -3,7 +3,6 @@ using System.Linq;
 using SweetSugar.Scripts.AdsEvents;
 using SweetSugar.Scripts.Core;
 using SweetSugar.Scripts.GUI.Boost;
-using SweetSugar.Scripts.Localization;
 using SweetSugar.Scripts.System;
 using TMPro;
 using UnityEngine;
@@ -17,6 +16,7 @@ namespace SweetSugar.Scripts.GUI.BonusSpin
     /// </summary>
     public class BonusSpin : MonoBehaviour
     {
+        public static BonusSpin Instance;
         public GameObject wheel;
         private bool spin;
         private bool stopspin;
@@ -30,66 +30,66 @@ namespace SweetSugar.Scripts.GUI.BonusSpin
         [Header("Prices range for first and seconds spins")]
         public int[] spinPrice;
 
-    public GameObject closeButton;
-    public UnityEvent OnSpin;
-    void OnEnable()
-    {
-        transform.Find("Image/BuyPlay").GetComponent<Button>().interactable = true;
-        spin = false;
-        stopspin = false;
-        closeButton.GetComponent<Button>().interactable = true;
-        var i =  Mathf.Clamp( PlayerPrefs.GetInt("Spinned", 0),0,spinPrice.Length-1);
-        if(i>0)
+        public GameObject closeButton;
+        public UnityEvent OnSpin;
+        void OnEnable()
         {
-            priceButton.text = "" + spinPrice[i];
-            coins.SetActive(true);
-        }
-        else
-        {
-            priceButton.text = LocalizationManager.GetText(82, "Free");
-            coins.SetActive(false);
+            Instance = this;
+            transform.Find("Image/BuyPlay").GetComponent<Button>().interactable = true;
+            spin = false;
+            stopspin = false;
+            closeButton.GetComponent<Button>().interactable = true;
+            var i = Mathf.Clamp(PlayerPrefs.GetInt("Spinned", 0), 0, spinPrice.Length - 1);
+            if (i > 0)
+            {
+                priceButton.text = "" + spinPrice[i];
+                coins.SetActive(true);
+            }
+            else
+            {
+                priceButton.text = "Free";
+                coins.SetActive(false);
 
             }
-        
-    }
-    /// <summary>
-    /// Purchasing of one spin
-    /// </summary>
-    public void BuyStartSpin()
-    {
-        transform.Find("Image/BuyPlay").GetComponent<Button>().interactable = false;
-        if (priceButton.text == LocalizationManager.GetText(82, "Free"))
+
+        }
+        /// <summary>
+        /// Purchasing of one spin
+        /// </summary>
+        public void BuyStartSpin()
         {
-            AdsManager.OnRewardedShown += () =>
+            transform.Find("Image/BuyPlay").GetComponent<Button>().interactable = false;
+            if (priceButton.text == "Free")
             {
+
+                InitScript.Instance.currentReward = RewardsType.FreeAction;
+                GoogleAdsManager.Instance.adEventCode = 5;
+                // AdsManager.THIS.ShowRewardedAds();
+                GoogleAdsManager.Instance.ShowRewardedAd();
+
+                return;
+            }
+            if (InitScript.Gems >= int.Parse(priceButton.text))
+            {
+                InitScript.Instance.SpendGems(int.Parse(priceButton.text));
                 StartSpin();
-            };
-            InitScript.Instance.currentReward = RewardsType.FreeAction;
-            AdsManager.THIS.ShowRewardedAds();
-         
-            return;
+            }
+            else
+            {
+                transform.Find("Image/BuyPlay").GetComponent<Button>().interactable = true;
+                MenuReference.THIS.GemsShop.gameObject.SetActive(true);
+            }
         }
-        if (InitScript.Gems >= int.Parse(priceButton.text))
+        public void StartSpin()
         {
-            InitScript.Instance.SpendGems(int.Parse(priceButton.text));
-            StartSpin();
+            if (!spin && !stopspin)
+                StartCoroutine(Spinning());
         }
-        else
-        {
-            transform.Find("Image/BuyPlay").GetComponent<Button>().interactable = true;
-            MenuReference.THIS.GemsShop.gameObject.SetActive(true);
-        }
-    }
-    public void StartSpin()
-    {
-        if (!spin && !stopspin)
-            StartCoroutine(Spinning());
-    }
 
         IEnumerator Spinning()
         {
             closeButton.GetComponent<Button>().interactable = false;
-            PlayerPrefs.SetInt("Spinned", PlayerPrefs.GetInt("Spinned", 0)+1);
+            PlayerPrefs.SetInt("Spinned", PlayerPrefs.GetInt("Spinned", 0) + 1);
             spin = true;
             rb = wheel.GetComponent<Rigidbody2D>();
             rb.angularVelocity = velocity;
@@ -115,9 +115,9 @@ namespace SweetSugar.Scripts.GUI.BonusSpin
                 rb.angularVelocity += Time.fixedDeltaTime;
 
         }
-/// <summary>
-/// Check getting bonus
-/// </summary>
+        /// <summary>
+        /// Check getting bonus
+        /// </summary>
         private void CheckSpin()
         {
             var boost = boosts.OrderByDescending(i => i.transform.position.x).OrderByDescending(i => i.transform.position.y).First();

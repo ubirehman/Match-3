@@ -26,7 +26,7 @@ namespace Integrations
         {
             if (canvasGroup != null)
             {
-                
+
                 canvasGroup.alpha = 1;
                 canvasGroup.blocksRaycasts = true;
                 if (checkRewardedAvailable && GetComponent<Button>().onClick.GetPersistentMethodName(0) == "ShowRewardedAd" /*&& !AdManager.Instance.IsRewardedAvailable()*/)
@@ -41,10 +41,10 @@ namespace Integrations
 
         private IEnumerator WaitForAds()
         {
-            yield return new WaitUntil(()=>AdsManager.THIS.GetRewardedUnityAdsReady());
+            yield return new WaitUntil(() => AdsManager.THIS.GetRewardedUnityAdsReady());
             canvasGroup.alpha = 1;
             canvasGroup.blocksRaycasts = true;
- 
+
 
         }
 
@@ -69,7 +69,7 @@ namespace Integrations
         public void ShowRewardedAd()
         {
             AdsManager.OnRewardedShown += OnRewardedShown;
-            AdsManager.THIS.ShowRewardedAds();
+            GoogleAdsManager.Instance.ShowRewardedAd();
         }
     }
 }

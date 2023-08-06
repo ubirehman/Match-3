@@ -25,7 +25,7 @@ namespace SweetSugar.Scripts.GUI
 
         private void OnEnable()
         {
-            textday.text = day.ToString() + " " + LocalizationManager.GetText(15, "DAY");
+            textday.text = day.ToString() + " " + "DAY";
         }
 
         public void SetDayAhead()

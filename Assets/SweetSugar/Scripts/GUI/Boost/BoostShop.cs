@@ -51,6 +51,7 @@ namespace SweetSugar.Scripts.GUI.Boost
 
         public void SetBoost(BoostProduct boost, Action callbackL)
         {
+            print("SET BOOST" + boost.GetName());
             boostType = boost.boostType;
             gameObject.SetActive(true);
             // icon.sprite = boost.icon;
@@ -89,12 +90,12 @@ namespace SweetSugar.Scripts.GUI.Boost
 
         public string GetDescription()
         {
-            return LocalizationManager.GetText(descriptionLocalizationRefrence, description);
+            return description;
         }
 
         public string GetName()
         {
-            return LocalizationManager.GetText(nameLocalizationReference, name);
+            return name;
         }
     }
 }

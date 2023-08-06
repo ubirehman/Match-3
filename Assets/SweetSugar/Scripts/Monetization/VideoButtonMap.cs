@@ -16,7 +16,7 @@ namespace SweetSugar.Scripts.Monetization
         private void OnEnable()
         {
             button.interactable = true;
-            Invoke("Prepare",2);
+            Invoke("Prepare", 2);
         }
 
         private void Prepare()
@@ -29,10 +29,12 @@ namespace SweetSugar.Scripts.Monetization
 
         public void ShowVideoAds()
         {
-            if (!AdsManager.THIS.GetRewardedUnityAdsReady()) return;
+            // if (!AdsManager.THIS.GetRewardedUnityAdsReady()) return;
             InitScript.Instance.currentReward = RewardsType.GetGems;
+            GoogleAdsManager.Instance.adEventCode = 6;
 
-            AdsManager.THIS.ShowRewardedAds();
+            // AdsManager.THIS.ShowRewardedAds();
+            GoogleAdsManager.Instance.ShowRewardedAd();
         }
 
         private void ShowButton()
