@@ -25,13 +25,15 @@ public class LevelCompleteCash : MonoBehaviour
 
     private IEnumerator GrantMoney()
     {
-        valueText.text = amountToGive.ToString();
-        PlayerPrefs.SetInt("CashAmount", amountToGive);
+        print("<color=red> GRANT MONEY </color>");
+        PlayerPrefs.SetInt("CashAmount", amountToGive + PlayerPrefs.GetInt("CashAmount", 0));
         PlayerPrefs.Save();
+
+        valueText.text = amountToGive.ToString();
+        cashAmount.text = PlayerPrefs.GetInt("CashAmount", 0).ToString();
         yield return new WaitForSeconds(waitTime);
 
         moneyPanel.SetActive(true);
-        cashAmount.text = PlayerPrefs.GetInt("CashAmount", 0).ToString();
     }
 
 

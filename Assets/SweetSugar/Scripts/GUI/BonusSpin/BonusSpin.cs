@@ -49,7 +49,6 @@ namespace SweetSugar.Scripts.GUI.BonusSpin
             {
                 priceButton.text = "Free";
                 coins.SetActive(false);
-
             }
 
         }

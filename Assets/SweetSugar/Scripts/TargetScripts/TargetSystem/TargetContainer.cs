@@ -28,19 +28,19 @@ namespace SweetSugar.Scripts.TargetScripts.TargetSystem
         public List<GameObject> prefabs = new List<GameObject>();
         public TargetContainer DeepCopy()
         {
-            var other = (TargetContainer) MemberwiseClone();
+            var other = (TargetContainer)MemberwiseClone();
 
             return other;
         }
 
         public string GetDescription()
         {
-            return LocalizationManager.GetText(localization.description.index, localization.description.text);
+            return localization.description.text;
         }
 
         public string GetFailedDescription()
         {
-            return LocalizationManager.GetText(localization.failed.index, localization.failed.text);
+            return localization.failed.text;
         }
     }
 
@@ -51,7 +51,7 @@ namespace SweetSugar.Scripts.TargetScripts.TargetSystem
         public LocalizationIndex description;
         public LocalizationIndex failed;
     }
-    
+
     public enum CollectingTypes
     {
         Destroy,
@@ -70,11 +70,12 @@ namespace SweetSugar.Scripts.TargetScripts.TargetSystem
     public class SprArrays : ReorderableArray<SprArray>
     {
     }
-    
+
     [Serializable]
     public class SprArray
     {
-        [FormerlySerializedAs("sprites0")] [Reorderable]
+        [FormerlySerializedAs("sprites0")]
+        [Reorderable]
         public SpriteList sprites;
 
         public SprArray Clone()

@@ -30,9 +30,9 @@ namespace SweetSugar.Scripts.GUI
         if (LevelManager.THIS != null && LevelManager.THIS.levelLoaded)
         {
             if (LevelManager.THIS.levelData.limitType == LIMIT.MOVES)
-                GetComponent<TextMeshProUGUI>().text = LocalizationManager.GetText(41, GetComponent<TextMeshProUGUI>().text);
+                GetComponent<TextMeshProUGUI>().text = GetComponent<TextMeshProUGUI>().text;
             else
-                GetComponent<TextMeshProUGUI>().text = LocalizationManager.GetText(77, GetComponent<TextMeshProUGUI>().text);
+                GetComponent<TextMeshProUGUI>().text = GetComponent<TextMeshProUGUI>().text;
         }
 
         }

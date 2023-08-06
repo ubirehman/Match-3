@@ -41,12 +41,12 @@ namespace SweetSugar.Scripts.GUI
             icon = g.GetComponent<Image>();
             if (reward.type == BoostType.None)
             {
-                text.text = LocalizationManager.GetText(47, "You got coins");
+                text.text = "You got coins";
                 rewardName.text = reward.GetDescription();
             }
             else
             {
-                text.text = LocalizationManager.GetText(85, "You got the boost");
+                text.text =  "You got the boost";
                 rewardName.text = reward.GetDescription();
             }
 
@@ -61,13 +61,13 @@ namespace SweetSugar.Scripts.GUI
             icon.sprite = sprites[i];
             if (i == 0)
             {
-                text.text = LocalizationManager.GetText(47, "You got coins");
-                rewardName.text = LocalizationManager.GetText(87, "Coins");
+                text.text = "You got coins";
+                rewardName.text =  "Coins";
             }
             else if (i == 1)
             {
-                text.text = LocalizationManager.GetText(86,"You got life");
-                rewardName.text = LocalizationManager.GetText(88, "Life");
+                text.text = "You got life";
+                rewardName.text =  "Life";
             }
         }
     }
