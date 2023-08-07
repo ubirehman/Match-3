@@ -39,10 +39,6 @@ public class GoogleAdsManager : MonoBehaviour
 
     private bool noAdPurchase;
 
-    //public Text fpsMeter;
-    //public Text statusText;
-
-
     private void Awake()
     {
         if (Instance == null)

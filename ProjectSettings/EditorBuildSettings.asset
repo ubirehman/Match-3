@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/SweetSugar/Scenes/gameStatic.unity
     guid: 2d0d93538b9f447f5860fee1ef81d59b
+  - enabled: 1
+    path: Assets/SweetSugar/Scenes/TermsCondition.unity
+    guid: fc3683811d730e548bc8bebf40f22c93
   m_configObjects: {}

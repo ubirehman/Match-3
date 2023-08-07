@@ -12,12 +12,12 @@ public class IntroManager : MonoBehaviour
 
     private void Awake()
     {
-       
+
     }
     // Start is called before the first frame update
     void Start()
     {
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(2);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(PlayerPrefs.GetInt("TOS", 0).Equals(1) ? 1 : 3);
         asyncOperation.allowSceneActivation = false;
 
         loadingBarFillerImage.DOFillAmount(1, 2f).SetEase(Ease.Linear).OnComplete(() => asyncOperation.allowSceneActivation = true);
@@ -26,6 +26,6 @@ public class IntroManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
