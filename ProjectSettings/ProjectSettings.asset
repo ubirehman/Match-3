@@ -939,6 +939,7 @@ PlayerSettings:
     Collab: 1
     ErrorHub: 0
     Hub: 0
+    Purchasing: 1
     UNet: 1
     Unity Ads: 1
   luminIcon:
@@ -960,11 +961,11 @@ PlayerSettings:
   apiCompatibilityLevel: 3
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  cloudProjectId: 77821eb4-74d4-4fa9-a5bf-c8faa0dcae58
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Sweet Sugar
-  organizationId: 
+  projectName: Fruit Crush Saga
+  organizationId: iubi
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 1
   hmiLoadingImage: {fileID: 0}
