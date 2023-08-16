@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eef85abb91a4dbcb892583a26570802, type: 3}
   m_Name: UnityAdsID
   m_EditorClassIdentifier: 
-  androidID: 3186162
-  iOSID: 3186163
+  androidID: 
+  iOSID: 

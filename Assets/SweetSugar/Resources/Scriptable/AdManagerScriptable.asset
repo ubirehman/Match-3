@@ -29,7 +29,7 @@ MonoBehaviour:
     adType: 1
     everyLevel: 1
     calls: 0
-  admobUIDAndroid: ca-app-pub-9974681578637939/6245469467
-  admobUIDIOS: ca-app-pub-3940256099942544/1033173712
+  admobUIDAndroid: 
+  admobUIDIOS: 
   admobRewardedUIDAndroid: 
   admobRewardedUIDIOS: 
