@@ -14,7 +14,6 @@ public class GoogleAdsManager : MonoBehaviour
 {
     public static GoogleAdsManager Instance;
 
-
     public static int adCount = 0;
     public static int menuCount = 0;
     public int adEventCode = 0;
