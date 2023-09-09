@@ -953,10 +953,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2384430166869280796}
-        m_TargetAssemblyTypeName: SweetSugar.Scripts.GUI.AnimationEventManager, Assembly-CSharp
-        m_MethodName: BackToMap
-        m_Mode: 1
+      - m_Target: {fileID: 1546001551982662595}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
