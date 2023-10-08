@@ -161,12 +161,12 @@ public class GoogleAdsManager : MonoBehaviour
     {
         // Raised when an ad is loaded into the banner view.
         bannerView.OnBannerAdLoaded += () =>
-        {
-            Debug.Log("Banner view loaded an ad with response : "
-                + bannerView.GetResponseInfo());
+       {
+           Debug.Log("Banner view loaded an ad with response : "
+               + bannerView.GetResponseInfo());
 
-            LoadBannerAd();
-        };
+           LoadBannerAd();
+       };
         // Raised when an ad fails to load into the banner view.
         bannerView.OnBannerAdLoadFailed += (LoadAdError error) =>
         {
@@ -297,17 +297,16 @@ public class GoogleAdsManager : MonoBehaviour
     }
     public void ShowRewardedAd()
     {
-        const string rewardMsg =
-            "Rewarded ad rewarded the user. Type: {0}, amount: {1}.";
-
+        Debug.Log($"{rewardedAd.CanShowAd()} CAN SHOW REWARDED ADDDDDDD");
         if (rewardedAd != null && rewardedAd.CanShowAd())
         {
             rewardedAd.Show((Reward reward) =>
             {
                 // TODO: Reward the user.
-                Debug.Log(String.Format(rewardMsg, reward.Type, reward.Amount));
+                Debug.Log("String.Format(rewardMsg, reward.Type, reward.Amount)");
             });
         }
+
     }
 
 
